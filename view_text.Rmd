@@ -1,0 +1,32 @@
+---
+title: "View Text"
+author: "Ziyan Li"
+date: "October 21, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+```{r}
+hms <- read.csv("HMS raw data 2016.csv")
+
+#check NA in colimns and rows
+colnames(hms)[colSums(is.na(hms))==dim(hms)[1]] # all NA columns
+rownames(hms)[rowSums(is.na(hms))==dim(hms)[2]]
+min(rowSums(is.na(hms)))
+
+# clean text input
+text <- data.frame(hms[,c(names(hms %>% select(contains("text"))))])
+text[text==""] <- NA
+text <- na.omit(text)
+text <- data.frame(hms[,c(names(hms %>% select(contains("text"))))])
+text[text==""] <- NA
+colSums(is.na(text))
+viewtext <- lapply(text,FUN=function(x){x[!is.na(x)]})
+
+viewtext
+```
+
