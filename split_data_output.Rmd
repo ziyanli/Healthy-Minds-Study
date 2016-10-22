@@ -2,7 +2,7 @@
 title: "Split Data Output"
 author: "Ziyan Li"
 date: "October 21, 2016"
-output: pdf_document
+output: html_document
 ---
 ####This file helps to get familiar with data.\
 Each chunk refers to a data.frame with all column names shown in the output. \
